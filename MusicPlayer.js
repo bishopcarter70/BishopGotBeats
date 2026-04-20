@@ -105,10 +105,10 @@ function displayTracksFromPlaylist() {
     let DisplayPlaylist = document.createElement("div");
     const AddToCartBtn = document.createElement("button");
     const DownloadBtn = document.createElement("button");
-    AddToCartBtn.innerText = "ADD TO CART"
+    AddToCartBtn.innerHTML = "&#x1F6D2;"
     AddToCartBtn.style.fontSize = "0.250rem"
     AddToCartBtn.style.width = "5vw"
-    DownloadBtn.innerText = "DOWNLOAD"
+    DownloadBtn.innerHTML = "&#x2193;"
     DownloadBtn.style.fontSize = "0.250rem"
     DownloadBtn.style.width = "5vw"
 //        MusicInfodiv.classList.add("playlist");
