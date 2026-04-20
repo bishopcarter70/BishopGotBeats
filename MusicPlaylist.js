@@ -1,6 +1,24 @@
 
 const playlist = [
   {
+    title: "HOUR GLASS",
+    genre: "SEXY DRILL",
+    src: "Beats/Hour Glass 70BPM Sexy Drill.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                exclusive: 199.99,}
+  },
+  {
+    title: "FAMOUS",
+    genre: "TRAP",
+    src: "Beats/Famous 80BPM Trap.mp3",
+    duration: "3:39",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                exclusive: 199.99,}
+  },
+  {
     title: "CLAP FOR ME",
     genre: "SEXY DRILL",
     src: "Beats/Clap For Me 70BPM Sexy Drill.mp3",
@@ -38,7 +56,7 @@ const playlist = [
   },
   {
     title: "OG KUSH",
-    genre: "DRILL",
+    genre: "RNB",
     src: "/Beats/OG Kush 105BPM R&B.mp3",
     duration: "3:45",
     licenses: { mp3: 14.99,

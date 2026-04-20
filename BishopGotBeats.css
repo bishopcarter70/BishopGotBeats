@@ -7,7 +7,7 @@ header {
     display: flex; 
     justify-content: space-between;  
     font-size: 1rem;    
-    height: 5vh;
+    height: 10vh;
 }
 
 body { 
@@ -15,7 +15,7 @@ body {
 } 
 
 #Logo {
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
 }
 
@@ -40,7 +40,8 @@ body {
 
 #Cart {
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-top: 1vh;
 }
 
 #CartQuantity {
@@ -82,7 +83,7 @@ body {
     font-size: 2rem; 
     position: absolute; 
     left: 88vw; 
-    top: 8vh; 
+    top: 14vh; 
     cursor: pointer;
 }
 
@@ -124,13 +125,13 @@ body {
   background-color: #4CAF50;
 }
 
-.PopupModal {
+/*.PopupModal {
      height: 25vh;
      display: none;
      position: fixed; 
      top: 5.375vh; 
      background-color: white;
-}
+}*/
 
 #PlaylistModal {
     background-color: #534D41;
@@ -175,36 +176,67 @@ body {
     font-size: 0.5rem; 
     text-align: center; 
     justify-content: center; 
-    margin-top: 1vh;
+    margin-top: -4vh;
+}
+
+.Licenses_Type ul {
+    padding-left: 0px;
 }
 
 #Licenses ul {
     list-style-type: none;
 }
 
+#DownloadModalContainer {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+#DownloadModal {
+    height: 50vh;
+    width: 75vw;
+    background-color: white;
+    font-size: 0.350rem;
+    text-align: center;
+    margin-left: 12vw;
+    margin-top: 20vh;
+}
+
 #AboutMeTxtWPic {
     display: flex; 
-    font-size: 0.5rem;
+    font-size: 0.650rem;
 }
 
 #Biography {
     display: flex;
-    font-size: 0.3rem;
+    font-size: 0.750rem;
 }
-.OtherOnlinePlatforms {
+
+.SocialsContainer {
+    display: flex; 
+    width: 100vw;
+    align-items: center;
+}
+
+.SocialsTakeAction {
+    font-size: 0.5rem; 
+    text-align: center; 
+    width: 50vw;
+}
+
+
+.TestimonialsContainer {
     display: flex;
-    font-size: 0.25rem;
-}
-
-
-#TestimonialsContainer {
-    display: flex
+    font-size: 1rem;
 }
 
 footer{
-    background-color: #534D41;
-    justify-content: center;    
-    font-size: 0.4rem;   
+    background-color: #534D41;   
+    font-size: 0.4rem;  
 }
 
 #NewsLetterSignup label {
@@ -215,20 +247,107 @@ footer{
 @media (width > 500px) {
     #AboutMeTxtWPic {
     display: flex; 
-    font-size: 0.650rem;
+    font-size: 0.750rem;
+    }  
+    #SongInfo {
+    font-size: 0.5rem;
     }   
+    #PlaylistModal {
+    bottom: 18vh; 
+    }
+
+    #Licenses {
+    margin-top: -2vh;
+    }
+    .TestimonialsContainer {
+    font-size: 1.150rem;
+    }
+    footer{ 
+    font-size: 0.575rem;  
+    } 
+    header {    
+    height: 12.5vh;
+    }
+}
+@media (width > 600px) {
+    header {    
+    height: 14vh;
+    }
+    #Biography {
+    display: flex;
+    font-size: 1rem;
+    }    
+}
+@media (width > 700px) {
+    .TestimonialsContainer {
+    font-size: 1.25rem;
+    }    
+    #AboutMeTxtWPic {
+        display: flex; 
+        font-size: 0.850rem;
+    }
 }
 
 @media (width > 800px) {
     #AboutMeTxtWPic {
     display: flex; 
-    font-size: 0.75rem;
+    font-size: 0.950rem;
+    }   
+    #SongInfo {
+    font-size: 0.650rem;
+    } 
+     #PlaylistModal {
+    bottom: 20vh; 
+    }
+    #Biography {
+    display: flex;
+    font-size: 1.150rem;
+    } 
+    footer{ 
+    font-size: 0.650rem;  
+    } 
+    header {    
+    height: 16vh;
+    }
+    #Licenses {
+    font-size: 0.75rem; 
+    margin-top: 0;
+    }
+}
+@media(width > 900px) {
+    .TestimonialsContainer {
+    font-size: 1.350rem;
+    }
+}
+
+@media (width > 1000px) {
+    #AboutMeTxtWPic {
+    display: flex; 
+    font-size: 1rem;
+    }
+    footer{ 
+    font-size: 0.750rem;  
     }   
 }
 
+@media (width > 1100px) {
+    .TestimonialsContainer {
+    font-size: 1.450rem;
+    }
+}
 @media (width > 1200px) {
-    #AboutMeTxtWPic {
-    display: flex; 
-    font-size: 0.775rem;
-    }   
+    #PlaylistModal {
+    bottom: 23vh; 
+    } 
+    #Biography {
+    display: flex;
+    font-size: 1.250rem;
+    } 
+    
+    #Licenses {
+    margin-top: 4vh;
+    }
+    .TestimonialsContainer {
+    font-size: 1.5rem;
+    }
 }

@@ -25,13 +25,13 @@ PlayPauseBtn.addEventListener('click', playPause);
 PrevButton.addEventListener('click', playPreviousBeat);
 NextButton.addEventListener('click', playNextBeat);
 Beat.addEventListener('timeupdate', () => {
-    ProgressBar.value = Beat.currentTime;
+//    ProgressBar.value = Beat.currentTime;
     displayTime(TimeDisplay, Beat.duration, Beat.currentTime);
 });
+
 ProgressBar.addEventListener('drag', () => {
     Beat.currentTime = ProgressBarBar.value;
 });
-DownloadBeatButton.addEventListener('click', ShowBeatDownload);
 OpenPlayList.addEventListener('click', function showPlaylist() {
     PlaylistModal.style.display = "block"; 
     displayTracksFromPlaylist();
@@ -70,13 +70,15 @@ function playPause() {
 function playNextBeat() {
   currentSongIndex = (currentSongIndex + 1) % playlist.length; // Loop back to start
   loadBeat(currentSongIndex);
-  playPause();
+  Beat.play();
+  PlayPauseBtn.innerHTML = '<span> || </span>';
 }
 
 function playPreviousBeat() {
   currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length; // Handle negative index
   loadBeat(currentSongIndex);
-  playPause();
+  Beat.play();
+  PlayPauseBtn.innerHTML = '<span> || </span>';
 }
 
 function formatTime(seconds) {
@@ -87,6 +89,10 @@ function formatTime(seconds) {
 
 function displayTime(element, totalDuration, currentTime) {
     element.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
+    // 1. Calculate percentage
+    const progressPercent = (currentTime / totalDuration) * 100;    
+    // 2. Update the visual progress bar
+    ProgressBar.style.width = `${progressPercent}%`;
 }
 
 // Display Tracks In PlayList
@@ -98,18 +104,23 @@ function displayTracksFromPlaylist() {
 //    console.log(element, index);
     let DisplayPlaylist = document.createElement("div");
     const AddToCartBtn = document.createElement("button");
+    const DownloadBtn = document.createElement("button");
     AddToCartBtn.innerText = "ADD TO CART"
-    AddToCartBtn.style.fontSize = "0.350rem"
-    AddToCartBtn.style.width = "10vw"
+    AddToCartBtn.style.fontSize = "0.250rem"
+    AddToCartBtn.style.width = "5vw"
+    DownloadBtn.innerText = "DOWNLOAD"
+    DownloadBtn.style.fontSize = "0.250rem"
+    DownloadBtn.style.width = "5vw"
 //        MusicInfodiv.classList.add("playlist");
     DisplayPlaylist.innerHTML =`<h1 class="BeatTitle"> ${element.title}</h1>
                                  <h1 id="BeatGenre"> ${element.genre}</h1>
                                  <h1 id="BeatDuration"> ${element.duration}</h1>`; 
     DisplayPlaylist.style.display = "grid";
-    DisplayPlaylist.style.gridTemplateColumns ="1fr 1fr 1fr 1fr";
+    DisplayPlaylist.style.gridTemplateColumns ="1fr 1fr 1fr 1fr 1fr";
     DisplayPlaylist.style.justifyContent = "center";
     DisplayPlaylist.style.fontSize = "0.3rem"; /// I NEED TO GO OVER THIS!!!!
     DisplayPlaylist.appendChild(AddToCartBtn);
+    DisplayPlaylist.appendChild(DownloadBtn);
     BeatsFromPlaylist.appendChild(DisplayPlaylist);
       AddToCartBtn.onclick = function() {
       LicenseModalContainer.style.display = "block";    
@@ -137,6 +148,21 @@ function displayTracksFromPlaylist() {
                                 </div>     
                                 </div>`;
       };
+      DownloadBtn.onclick = function() {
+      DownloadModalContainer.style.display = "block";
+      DownloadModal.innerHTML =  `
+                                  <div id ="CloseModal" class="CloseButton" onclick= "closeModal()" style="margin-left: 60vw;" >×</div>
+                                  <h1 class="BeatTitle"> ${element.title}</h1>
+                                  <h1 id="BeatGenre"> ${element.genre}</h1>
+                                  <h1 id="BeatDuration"> ${element.duration}</h1>
+                                  <div id="DownloadFile">
+                                  <div id="YoutubeSubscription">
+                                      <form action="post">
+                                      <h1>Subscribe To My Youtube</h1>
+                                      <button>Download Now</button>
+                                      </form>
+                                  </div>`
+      }
     })
 }
 
@@ -216,22 +242,6 @@ playFromPlaylist();
     element.textContent = `${formatTime(currentTime)} / ${formatTime(totalDuration)}`;
 }*/
    
-function ShowBeatDownload() {
-  DownloadModalContainer.style.display = "block";
-  const DownloadContainer = document.createElement("div");
-  DownloadContainer.innerHTML =  `
-            <div id="DownloadFile" style="height: 12.5vh; width: 100vw; display: flex; justify-content: center; text-align: center; margin-top: 10vh;">
-            <div id="YoutubeSubscription">
-                <form action="post">
-                <h1>Subscribe To My Youtube</h1>
-                <button>Download Now</button>
-                </form>
-            </div>
-            <div class="CloseButton" onclick= "closeModal()" style="left: 28vw; top: -10vh;">×</div> 
-            </div>`
-  DownloadModalContainer.appendChild(DownloadContainer);
-}
-
 function AddToCart(name, price){
   // Check if item already exists to increment quantity
   const existingItem = cart.find(item => item.name === name);
@@ -242,6 +252,7 @@ function AddToCart(name, price){
     cart.push({ name, price, quantity: 1 });
   }
   console.log(cart)
+  alert('Item added to cart!')
   updateCartUI();
 }
 
