@@ -1,13 +1,67 @@
 
 const playlist = [
   {
+    title: "OLD ME",
+    genre: "TRAP",
+    src: "Beats/Old Me 80BPM Trap.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
+    title: "MOVIE",
+    genre: "SEXY DRILL",
+    src: "Beats/Movie 80BPM Sexy Drill.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
+    title: "SWIRL",
+    genre: "TRAP",
+    src: "Beats/Swirl 80BPM Trap.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
+    title: "MACARONI",
+    genre: "TRAP",
+    src: "Beats/Macaroni 80BPM Trap.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
+    title: "LLAMA",
+    genre: "SEXY DRILL",
+    src: "Beats/Llama 80BPM Sexy Drill.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
+    title: "ICEBOX",
+    genre: "TRAP",
+    src: "Beats/Icebox 80BPM Trap.mp3",
+    duration: "3:12",
+    licenses: { mp3: 14.99,
+                wav: 29.99,
+                trackouts: 99.99,}
+  },
+  {
     title: "HOUR GLASS",
     genre: "SEXY DRILL",
     src: "Beats/Hour Glass 70BPM Sexy Drill.mp3",
     duration: "3:12",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "FAMOUS",
@@ -16,7 +70,7 @@ const playlist = [
     duration: "3:39",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "CLAP FOR ME",
@@ -25,7 +79,7 @@ const playlist = [
     duration: "3:39",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "DIFFERENT LEVELS",
@@ -34,7 +88,7 @@ const playlist = [
     duration: "3:24",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "FLOOR IT",
@@ -43,7 +97,7 @@ const playlist = [
     duration: "4:00",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "MADE IT",
@@ -52,7 +106,7 @@ const playlist = [
     duration: "2:45",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "OG KUSH",
@@ -61,7 +115,7 @@ const playlist = [
     duration: "3:45",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "POLE",
@@ -70,7 +124,7 @@ const playlist = [
     duration: "3:24",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "ROCK WITH ME",
@@ -79,7 +133,7 @@ const playlist = [
     duration: "3:24",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
     {
     title: "PAIN AWAY",
@@ -88,7 +142,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "ROADRUNNER",
@@ -97,7 +151,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "MY EX",
@@ -106,7 +160,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "MERCEDES",
@@ -115,7 +169,7 @@ const playlist = [
     duration: "3:04",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
     {
     title: "LIQUOR",
@@ -124,7 +178,7 @@ const playlist = [
     duration: "3:40",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
     {
     title: "FORGET HER",
@@ -133,7 +187,7 @@ const playlist = [
     duration: "3:40",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "DREAMS N NIGHTMARES",
@@ -142,7 +196,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "DRANK",
@@ -151,7 +205,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "BUGATTI",
@@ -160,7 +214,7 @@ const playlist = [
     duration: "3:30",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
   {
     title: "BROWN GIRL",
@@ -169,7 +223,7 @@ const playlist = [
     duration: "3:20",
     licenses: { mp3: 14.99,
                 wav: 29.99,
-                exclusive: 199.99,}
+                trackouts: 99.99,}
   },
 ];
 

@@ -28,6 +28,13 @@ Beat.addEventListener('timeupdate', () => {
 //    ProgressBar.value = Beat.currentTime;
     displayTime(TimeDisplay, Beat.duration, Beat.currentTime);
 });
+Beat.addEventListener('ended', () => {
+    currentSongIndex++;
+    if (currentSongIndex < playlist.length) {
+        audio.src = playlist[currentSongIndex];
+        audio.play(); // Start the next song
+    }
+});
 
 ProgressBar.addEventListener('drag', () => {
     Beat.currentTime = ProgressBarBar.value;
@@ -103,24 +110,26 @@ function displayTracksFromPlaylist() {
  playlist.forEach((element, index)=>{
 //    console.log(element, index);
     let DisplayPlaylist = document.createElement("div");
+    const ActionsContainer = document.createElement("div")
     const AddToCartBtn = document.createElement("button");
     const DownloadBtn = document.createElement("button");
     AddToCartBtn.innerHTML = "&#x1F6D2;"
-    AddToCartBtn.style.fontSize = "0.250rem"
-    AddToCartBtn.style.width = "5vw"
+    AddToCartBtn.style.fontSize = "0.575rem"
+    AddToCartBtn.style.width = "10vw"
     DownloadBtn.innerHTML = "&#x2193;"
-    DownloadBtn.style.fontSize = "0.250rem"
-    DownloadBtn.style.width = "5vw"
+    DownloadBtn.style.fontSize = "0.575rem"
+    DownloadBtn.style.width = "10vw"
 //        MusicInfodiv.classList.add("playlist");
     DisplayPlaylist.innerHTML =`<h1 class="BeatTitle"> ${element.title}</h1>
                                  <h1 id="BeatGenre"> ${element.genre}</h1>
                                  <h1 id="BeatDuration"> ${element.duration}</h1>`; 
     DisplayPlaylist.style.display = "grid";
-    DisplayPlaylist.style.gridTemplateColumns ="1fr 1fr 1fr 1fr 1fr";
+    DisplayPlaylist.style.gridTemplateColumns ="1fr 1fr 1fr 1fr";
     DisplayPlaylist.style.justifyContent = "center";
     DisplayPlaylist.style.fontSize = "0.3rem"; /// I NEED TO GO OVER THIS!!!!
-    DisplayPlaylist.appendChild(AddToCartBtn);
-    DisplayPlaylist.appendChild(DownloadBtn);
+    ActionsContainer.appendChild(AddToCartBtn);
+    ActionsContainer.appendChild(DownloadBtn);
+    DisplayPlaylist.appendChild(ActionsContainer);
     BeatsFromPlaylist.appendChild(DisplayPlaylist);
       AddToCartBtn.onclick = function() {
       LicenseModalContainer.style.display = "block";    
@@ -132,18 +141,18 @@ function displayTracksFromPlaylist() {
                                 <div id="LicenseInCartContainer" style="display: flex; font-size: 0.350rem; justify-content: space-evenly; margin-top: 2.5vh;">
                                     <div class="DifferentLicenses">
                                         <h1 class="Licenses"> STANDARD </h1>
-                                        <h1 class="LeasePrices"> $29.99</h1>
-                                        <button id="MP3Lease" onclick = "AddToCart('MP3',29.99)" data-id="1" data-name="MP3Lease" data-price="29" class="AddToCart">ADD TO CART</button>
+                                        <h1 class="LeasePrices"> ${element.licenses.mp3}</h1>
+                                        <button id="MP3Lease" onclick = "AddToCart('${element.title}',${element.licenses.mp3})" data-id="1" data-name="MP3Lease" data-price="29" class="AddToCart">ADD TO CART</button>
                                     </div>
                                     <div class="DifferentLicenses">
                                         <h1 class="Licenses"> PREMIUM </h1>
                                         <h1 class="LeasePrices"> $49.99</h1>
-                                        <button id="WAVLease" onclick = "AddToCart('WAV',49.99)"  data-id="2" data-name="WAVLease" data-price="49" class="AddToCart">ADD TO CART</button>
+                                        <button id="WAVLease" onclick = "AddToCart('${element.title}',${element.licenses.wav})"  data-id="2" data-name="WAVLease" data-price="49" class="AddToCart">ADD TO CART</button>
                                     </div>
                                     <div class="DifferentLicenses">
                                         <h1 class="Licenses"> TRACKOUTS </h1>
                                         <h1 class="LeasePrices"> $99.99</h1>
-                                        <button id="TrackOutLease" onclick = "AddToCart('TRACKOUTS',99.99)"  data-id="3" data-name="TrackOutLease" data-price="99" class="AddToCart">ADD TO CART</button>
+                                        <button id="TrackOutLease" onclick = "AddToCart('${element.title}',${element.licenses.trackouts})"  data-id="3" data-name="TrackOutLease" data-price="99" class="AddToCart">ADD TO CART</button>
                                     </div>         
                                 </div>     
                                 </div>`;
@@ -198,20 +207,67 @@ function displayResults(results) {
   results.forEach(beat => {
     const li = document.createElement('div');
     const AddToCartBtn = document.createElement("button");
-    AddToCartBtn.innerText = "ADD TO CART"
-    AddToCartBtn.style.fontSize = "0.350rem"
+    const DownloadBtn = document.createElement("button");
+    const ActionsContainer = document.createElement("div")
+    AddToCartBtn.innerHTML = "&#x1F6D2;"
+    AddToCartBtn.style.fontSize = "0.575rem"
     AddToCartBtn.style.width = "10vw"
+    DownloadBtn.innerHTML = "&#x2193;"
+    DownloadBtn.style.fontSize = "0.575rem"
+    DownloadBtn.style.width = "10vw"
     li.innerHTML = `<h1 class="BeatTitle"> ${beat.title}</h1>
                     <h1 id="BeatGenre"> ${beat.genre}</h1>
                     <h1 id="BeatDuration"> ${beat.duration}</h1> 
                     `;
     resultsList.appendChild(li);
-    li.appendChild(AddToCartBtn);
+    ActionsContainer.appendChild(AddToCartBtn);
+    ActionsContainer.appendChild(DownloadBtn);
+    li.appendChild(ActionsContainer);
     li.style.display="grid";
     li.style.gridTemplateColumns ="1fr 1fr 1fr 1fr";
     li.style.justifyContent="space-between";
     li.style.fontSize = "0.3rem"; // I NEED TO GO OVER THIS!!!!
-    
+    AddToCartBtn.onclick = function() {
+      LicenseModalContainer.style.display = "block";    
+      LicenseModal.innerHTML = `<div id ="CloseModal" class="CloseButton" onclick= "closeModal()" style="margin-left: 60vw;" >×</div>
+                                <h1 class="BeatTitle"> ${beat.title}</h1>
+                                <h1 id="BeatGenre"> ${beat.genre}</h1>
+                                <h1 id="BeatDuration"> ${beat.duration}</h1>
+                                <div id="LicensesInCart"> 
+                                <div id="LicenseInCartContainer" style="display: flex; font-size: 0.350rem; justify-content: space-evenly; margin-top: 2.5vh;">
+                                    <div class="DifferentLicenses">
+                                        <h1 class="Licenses"> STANDARD </h1>
+                                        <h1 class="LeasePrices"> ${beat.licenses.mp3}</h1>
+                                        <button id="MP3Lease" onclick = "AddToCart('${beat.title}',${beat.licenses.mp3})" data-id="1" data-name="MP3Lease" data-price="29" class="AddToCart">ADD TO CART</button>
+                                    </div>
+                                    <div class="DifferentLicenses">
+                                        <h1 class="Licenses"> PREMIUM </h1>
+                                        <h1 class="LeasePrices"> $49.99</h1>
+                                        <button id="WAVLease" onclick = "AddToCart('${beat.title}',${beat.licenses.wav})"  data-id="2" data-name="WAVLease" data-price="49" class="AddToCart">ADD TO CART</button>
+                                    </div>
+                                    <div class="DifferentLicenses">
+                                        <h1 class="Licenses"> TRACKOUTS </h1>
+                                        <h1 class="LeasePrices"> $99.99</h1>
+                                        <button id="TrackOutLease" onclick = "AddToCart('${beat.title}',${beat.licenses.trackouts})"  data-id="3" data-name="TrackOutLease" data-price="99" class="AddToCart">ADD TO CART</button>
+                                    </div>         
+                                </div>     
+                                </div>`;
+      };
+      DownloadBtn.onclick = function() {
+      DownloadModalContainer.style.display = "block";
+      DownloadModal.innerHTML =  `
+                                  <div id ="CloseModal" class="CloseButton" onclick= "closeModal()" style="margin-left: 60vw;" >×</div>
+                                  <h1 class="BeatTitle"> ${beat.title}</h1>
+                                  <h1 id="BeatGenre"> ${beat.genre}</h1>
+                                  <h1 id="BeatDuration"> ${beat.duration}</h1>
+                                  <div id="DownloadFile">
+                                  <div id="YoutubeSubscription">
+                                      <form action="post">
+                                      <h1>Subscribe To My Youtube</h1>
+                                      <button>Download Now</button>
+                                      </form>
+                                  </div>`
+      }
   });
   MusicInfodiv.style.display="none";
 }
@@ -234,7 +290,6 @@ function playFromPlaylist() {
         }
       }); 
 }
-
 // THIS FUNCTION CALL ALLOWS MUSIC/BEAT TO BE PLAYED ON CLICK!
 playFromPlaylist(); 
 

@@ -83,7 +83,7 @@ body {
     font-size: 2rem; 
     position: absolute; 
     left: 88vw; 
-    top: 14vh; 
+    top: 10vh; 
     cursor: pointer;
 }
 
@@ -251,11 +251,12 @@ footer{
     }  
     #SongInfo {
     font-size: 0.5rem;
-    }   
-    #PlaylistModal {
-    bottom: 18vh; 
+    }      
+    #PlaylistHamburger {
+    font-size: 2rem; 
+    left: 88vw; 
+    top: 14vh; 
     }
-
     #Licenses {
     margin-top: -2vh;
     }
@@ -272,6 +273,11 @@ footer{
 @media (width > 600px) {
     header {    
     height: 14vh;
+    }
+    #PlaylistHamburger {
+    font-size: 2rem; 
+    left: 88vw; 
+    top: 14vh; 
     }
     #Biography {
     display: flex;
@@ -296,8 +302,10 @@ footer{
     #SongInfo {
     font-size: 0.650rem;
     } 
-     #PlaylistModal {
-    bottom: 20vh; 
+    #PlaylistHamburger {
+    font-size: 2rem; 
+    left: 88vw; 
+    top: 16vh; 
     }
     #Biography {
     display: flex;
